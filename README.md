@@ -61,7 +61,7 @@ ssh -i ~/.ssh/id_ed25519 team@111.88.128.191
 ssh -i ~/.ssh/team_internal team@team-02-nn
 ```
 
-**Создание пользователя и каталогов** (выполняется как `team` на каждой ноде)
+### Создание пользователя и каталогов (выполняется как `team` на каждой ноде)
 
 ```bash
 bash scripts/01_create_user.sh
@@ -70,7 +70,7 @@ bash scripts/01_create_user.sh
 Создаёт пользователя `dpe_sevinch`, каталоги `/srv/dpe/sevinch/...`,
 `.dpe_env` (переменные окружения) и файл `PORTS.md`
 
-**Установка JDK 8 и Hadoop** (выполняется как `team`, демоны будут в `dpe_sevinch`)
+### Установка JDK 8 и Hadoop (выполняется как `team`, демоны будут в `dpe_sevinch`)
 
 ```bash
 bash scripts/02_install_software.sh
@@ -78,7 +78,7 @@ bash scripts/02_install_software.sh
 
 Скачивает Temurin JDK 8 и Hadoop 3.3.6 и распаковывает в `/srv/dpe/sevinch/dist/`
 
-**Раскатка конфигов** (как `team`)
+### Раскатка конфигов (как `team`)
 
 ```bash
 bash scripts/03_apply_config.sh
@@ -86,7 +86,7 @@ bash scripts/03_apply_config.sh
 
 Копирует `conf/` в `/srv/dpe/sevinch/conf/hw1/` на все узлы
 
-**Формат NameNode** (только на team-02-nn, от `dpe_sevinch`)
+### Формат NameNode (только на team-02-nn, от `dpe_sevinch`)
 
 ```bash
 sudo -iu dpe_sevinch bash -lc 'hdfs namenode -format -force'
@@ -95,7 +95,7 @@ sudo -iu dpe_sevinch bash -lc 'hdfs namenode -format -force'
 Перед форматированием скрипт `04_format_namenode.sh` проверяет, что
 `dfs.namenode.name.dir` указывает строго на `/srv/dpe/sevinch/data/hw1/namenode`
 
-**Запуск кластера**
+### Запуск кластера
 
 ```bash
 bash scripts/05_start.sh
@@ -106,7 +106,7 @@ bash scripts/05_start.sh
 - team-02-00: `hdfs --daemon start datanode`
 - team-02-01: `hdfs --daemon start datanode`
 
-**Проверка целостности кластера**
+### Проверка целостности кластера
 
 ```bash
 bash scripts/07_verify.sh
@@ -116,7 +116,7 @@ bash scripts/07_verify.sh
 - веб-интерфейс http://10.2.0.11:21970/ (HTTP 200)
 - логи без критических ошибок (`grep ERROR` = 0)
 
-**Остановка**
+### Остановка
 
 ```bash
 bash scripts/06_stop.sh

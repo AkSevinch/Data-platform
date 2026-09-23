@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
-# 03_apply_config.sh
-# Раскатывает конфиги из ../conf в /srv/dpe/sevinch/conf/hw1 на каждой ноде.
-# Выполнять с edge-ноды от пользователя team.
+# раскатывает конфиги из conf/ в /srv/dpe/sevinch/conf/hw1 на всех нодах
 set -euo pipefail
 
 NAME="sevinch"

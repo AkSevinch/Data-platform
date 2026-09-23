@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
-# 05_start.sh
-# Запускает демоны кластера HDFS поузлово от пользователя dpe_sevinch.
-# Выполнять с edge-ноды от пользователя team.
+# запускает демоны кластера поузлово (namenode + secondarynamenode на nn, datanode везде)
 set -euo pipefail
 
 NN="team-02-nn"

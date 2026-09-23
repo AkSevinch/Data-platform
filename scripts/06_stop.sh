@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
-# 06_stop.sh
-# Останавливает ТОЛЬКО демоны пользователя dpe_sevinch (--daemon stop).
-# Не трогает чужие процессы. Выполнять с edge-ноды от пользователя team.
+# останавливает только демоны dpe_sevinch, чужие процессы не трогает
 set -euo pipefail
 
 run() { # run <host> <script>

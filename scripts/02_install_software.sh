@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
-# 02_install_software.sh
-# Скачивает и распаковывает Temurin JDK 8 и Hadoop 3.3.6 в /srv/dpe/sevinch/dist
-# на каждой ноде кластера. Выполнять с edge-ноды от пользователя team.
+# скачивает и распаковывает JDK 8 и Hadoop на каждой ноде в /srv/dpe/sevinch/dist
 set -euo pipefail
 
 NAME="sevinch"

@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
-# 04_format_namenode.sh
-# Форматирует NameNode НА STROGO team-02-nn после проверки dfs.namenode.name.dir.
-# Выполнять с edge-ноды от пользователя team.
+# форматирует NameNode на team-02-nn после проверки dfs.namenode.name.dir
 set -euo pipefail
 
 LINUX_USER="dpe_sevinch"

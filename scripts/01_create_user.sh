@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
-# 01_create_user.sh
-# Создаёт на каждой ноде кластера пользователя dpe_sevinch, каталоги и конфиг окружения.
-# Выполнять с edge-ноды (team-02-en) от пользователя team.
+# создаёт пользователя dpe_sevinch, каталоги и окружение на всех нодах кластера
 set -euo pipefail
 
 NAME="sevinch"

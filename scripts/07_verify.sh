@@ -1,15 +1,8 @@
 #!/usr/bin/env bash
-# 07_verify.sh
-# Проверка целостности кластера HDFS.
-# - hdfs dfsadmin -report: 3 живых DataNode, Decommission Status = Normal;
-# - недостаточная репликация/недостающие/коррумпированные блоки = 0;
-# - веб-интерфейс NameNode отвечает HTTP 200;
-# - в логах нет критических ошибок;
-# - функциональный тест записи/чтения.
-# Выполнять с edge-ноды от пользователя team.
+# проверка кластера: 3 живых DataNode, HTTP 200 у NameNode, логи без ошибок, тест записи
 set -euo pipefail
 
-nn() { # nn <script> — выполнить на team-02-nn от dpe_sevinch
+nn() { # выполнить команду на team-02-nn от dpe_sevinch
   ssh -i ~/.ssh/team_internal -o ConnectTimeout=8 "team@team-02-nn" \
     "sudo -iu dpe_sevinch bash -s" <<< "$1"
 }

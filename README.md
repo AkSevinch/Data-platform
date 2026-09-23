@@ -127,7 +127,7 @@ bash scripts/06_stop.sh
 
 ## Ключевые конфиги
 
-В конфиге `conf/hdfs-site.xml` самое важное:
+В конфиге `conf/hdfs-site.xml` самое важное
 
 - `dfs.namenode.rpc-address` = `team-02-nn:21020`
 - `dfs.namenode.http-address` = `team-02-nn:21970`
@@ -146,5 +146,3 @@ bash scripts/06_stop.sh
 - После перезапуска NameNode в логах DataNode может появиться единичный
   `EOFException`/`Connection refused`, это транзиентная ошибка на время рестарта,
   нода успешно переподключается (в логе `Successfully sent block report`)
-- При изменении конфигов HDFS выполняйте переформатирование только осознанно,
-  данные при этом теряются

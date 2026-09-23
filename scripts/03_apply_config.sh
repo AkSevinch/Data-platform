@@ -10,7 +10,7 @@ NODES=("team-02-nn" "team-02-00" "team-02-01")
 CONF_DIR="$(cd "$(dirname "$0")/../conf" && pwd)"
 
 for HOST in "${NODES[@]}"; do
-  echo "===== apply config on $HOST ====="
+  echo "--> $HOST"
   scp -q -i ~/.ssh/team_internal -o StrictHostKeyChecking=accept-new \
     "$CONF_DIR"/core-site.xml "$CONF_DIR"/hdfs-site.xml \
     "$CONF_DIR"/workers "$CONF_DIR"/hadoop-env.sh "$CONF_DIR"/log4j.properties \

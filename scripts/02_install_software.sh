@@ -25,7 +25,7 @@ INSTALL_EOF
 )
 
 for HOST in "${NODES[@]}"; do
-  echo "===== install on $HOST ====="
+  echo "--> $HOST"
   ssh -i ~/.ssh/team_internal -o StrictHostKeyChecking=accept-new -o ConnectTimeout=8 \
     "team@$HOST" "sudo -iu $LINUX_USER bash -s" <<< "$INSTALL_SCRIPT"
 done

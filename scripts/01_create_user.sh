@@ -71,7 +71,7 @@ SETUP_SCRIPT=${SETUP_SCRIPT//__LINUX_USER__/$LINUX_USER}
 SETUP_SCRIPT=${SETUP_SCRIPT//__HW__/$HW}
 
 for HOST in "${NODES[@]}"; do
-  echo "===== $HOST ====="
+  echo "--> $HOST"
   ssh -i ~/.ssh/team_internal -o StrictHostKeyChecking=accept-new -o ConnectTimeout=8 \
     "team@$HOST" "bash -s" <<< "$SETUP_SCRIPT"
 done

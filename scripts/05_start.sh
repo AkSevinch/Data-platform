@@ -27,11 +27,19 @@ hdfs --daemon start datanode 2>&1 | tail -1
 EOF
 }
 
-echo "== team-02-nn: namenode + secondarynamenode + datanode =="
+echo "--> team-02-nn (namenode + secondarynamenode + datanode)"
 run "$NN" "$(start_nn)"
-echo "== team-02-00: datanode =="
+echo "--> team-02-00 (datanode)"
 run team-02-00 "$(start_dn)"
-echo "== team-02-01: datanode =="
+echo "--> team-02-01 (datanode)"
 run team-02-01 "$(start_dn)"
+
+echo "ждём выхода NameNode из safe mode"
+run "$NN" 'source ~/.dpe_env
+for i in $(seq 1 30); do
+  hdfs dfsadmin -safemode get 2>/dev/null | grep -q OFF && break
+  sleep 1
+done
+hdfs dfsadmin -safemode get'
 
 echo "DONE. Проверка: bash scripts/07_verify.sh"

@@ -23,14 +23,14 @@ hdfs --daemon stop namenode 2>&1 | tail -1
 EOF
 }
 
-echo "== stop datanodes =="
+echo "stop datanodes"
 run team-02-01 "$(stop_dn)" || true
 run team-02-00 "$(stop_dn)" || true
 run team-02-nn "$(stop_nn)" || true
 
-echo "== остались процессы dpe_sevinch? (должно быть пусто) =="
+echo "остались процессы dpe_sevinch? (должно быть пусто)"
 for HOST in team-02-nn team-02-00 team-02-01; do
-  echo "-- $HOST --"
+  echo "--> $HOST"
   ssh -i ~/.ssh/team_internal -o ConnectTimeout=8 "team@$HOST" \
     "ps -eo user,pid,cmd | grep dpe_sevinch | grep -E 'NameNode|DataNode|SecondaryNameNode' | grep -v grep || echo '  none'"
 done

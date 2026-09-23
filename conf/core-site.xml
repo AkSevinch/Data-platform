@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<configuration>
+  <property>
+    <name>fs.defaultFS</name>
+    <value>hdfs://team-02-nn:21020</value>
+  </property>
+  <property>
+    <name>hadoop.tmp.dir</name>
+    <value>/srv/dpe/sevinch/tmp/hw1</value>
+  </property>
+</configuration>

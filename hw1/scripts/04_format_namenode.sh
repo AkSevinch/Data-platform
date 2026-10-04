@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-# форматирует NameNode на team-02-nn после проверки dfs.namenode.name.dir
 set -euo pipefail
 
 LINUX_USER="dpe_sevinch"

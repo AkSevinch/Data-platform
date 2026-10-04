@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-# останавливает только демоны dpe_sevinch, чужие процессы не трогает
 set -euo pipefail
 
 run() { # run <host> <script>

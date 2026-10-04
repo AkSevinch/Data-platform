@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-# проверка кластера: 3 живых DataNode, HTTP 200 у NameNode, логи без ошибок, тест записи
 set -euo pipefail
 
 nn() { # выполнить команду на team-02-nn от dpe_sevinch

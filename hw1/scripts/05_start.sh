@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-# запускает демоны кластера поузлово (namenode + secondarynamenode на nn, datanode везде)
 set -euo pipefail
 
 NN="team-02-nn"

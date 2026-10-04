@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-# создаёт пользователя dpe_sevinch, каталоги и окружение на всех нодах кластера
 set -euo pipefail
 
 NAME="sevinch"

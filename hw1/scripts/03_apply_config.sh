@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-# раскатывает конфиги из conf/ в /srv/dpe/sevinch/conf/hw1 на всех нодах
 set -euo pipefail
 
 NAME="sevinch"

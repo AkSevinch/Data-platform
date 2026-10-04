@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-# скачивает и распаковывает JDK 8 и Hadoop на каждой ноде в /srv/dpe/sevinch/dist
 set -euo pipefail
 
 NAME="sevinch"

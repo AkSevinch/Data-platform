@@ -59,6 +59,16 @@ Metastore хранит данные в Derby Network Server на team-02-00, а 
 Всё в каталоге `hw3/scripts/`, порядок запуска от 01 до 08,
 публикация UI отдельно, остановка отдельно
 
+## Результаты проверки
+
+Проверено на трёх нодах после восстановления `team-02-nn`:
+
+- `06_verify.sh`: `VERIFY: OK`, все четыре порта слушают, metastore внешний
+- `07_load_data.sh`: 3 партиции, 3 каталога HDFS, 36 строк, `dt=dt` отсутствует
+- `08_multiclient.sh`: `OVERLAP: YES`, `MULTICLIENT: OK`, клиент B на `team-02-nn`
+- Результаты лежат в `homeworks/`: `load_result.txt`, `verify.txt`,
+  `multiclient_result.txt`
+
 ### 01_preflight.sh
 
 ```bash
@@ -157,13 +167,16 @@ bash hw3/scripts/08_multiclient.sh
 
 Запускает два клиента одновременно:
 
-- клиент A на team-02-00 выполняет долгий запрос (sleep через `reflect`,
-  либо CROSS JOIN, если sleep недоступен)
+- клиент A на team-02-00 выполняет долгий запрос
+  `reflect('java.lang.Thread','sleep',25000L)`, аргумент передаётся как
+  `long`, иначе Hive ищет `Thread.sleep(int)` и падает с `NoSuchMethodException`
 - клиент B на team-02-nn в это время подключается к тому же HiveServer2,
   выполняет `SELECT current_user(), current_database()` и `SHOW PARTITIONS`
+- клиента B можно переопределить: `CLIENT2=team-02-01 bash hw3/scripts/08_multiclient.sh`
 
 Скрипт проверяет, что клиент B завершился, пока клиент A ещё работал.
-Это и есть доказательство одновременной работы более одного клиента
+Это и есть доказательство одновременной работы более одного клиента.
+Результат пишется в `/tmp/hw3_multiclient_result.txt` на edge-машине
 
 ### 09_publish_ui.sh (запускается с локальной машины, не с edge)
 
@@ -245,3 +258,4 @@ HIVE_HOME, HIVE_CONF_DIR, HIVE_LOG_DIR, HIVE_PID_DIR, память Hive 512 МБ
   связка проверена тестовым MR-джобом и загрузкой партиций
 - При остановке сначала гасятся HiveServer2 и Metastore, затем Derby;
   скрипт не делает `pkill java`, чтобы не задеть YARN и HDFS
+

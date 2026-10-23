@@ -1,0 +1,29 @@
+client A: team-02-00 (pid 121008)
+client B: team-02-nn
+A query: SELECT reflect('java.lang.Thread','sleep',25000L) AS slept;
+B output:
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/srv/dpe/sevinch/dist/hive/lib/log4j-slf4j-impl-2.18.0.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/srv/dpe/sevinch/dist/hadoop/share/hadoop/common/lib/slf4j-reload4j-1.7.36.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.apache.logging.slf4j.Log4jLoggerFactory]
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/srv/dpe/sevinch/dist/hive/lib/log4j-slf4j-impl-2.18.0.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/srv/dpe/sevinch/dist/hadoop/share/hadoop/common/lib/slf4j-reload4j-1.7.36.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.apache.logging.slf4j.Log4jLoggerFactory]
++--------------+----------+
+|     _c0      |   _c1    |
++--------------+----------+
+| dpe_sevinch  | default  |
++--------------+----------+
++----------------+
+|   partition    |
++----------------+
+| dt=2026-10-20  |
+| dt=2026-10-21  |
+| dt=2026-10-22  |
++----------------+
+
+OVERLAP: YES (B завершился, пока A ещё работал)
+MULTICLIENT: OK

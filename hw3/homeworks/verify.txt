@@ -1,0 +1,41 @@
+1. порты Hive
+   21050 LISTEN
+   21051 LISTEN
+   21053 LISTEN
+   21059 LISTEN
+2. процессы Hive только от dpe_sevinch
+  83056 /srv/dpe/sevinch/dist/jdk8/bin/java -Xmx192m -Dderby.system.home=/srv/dpe/sevinch/data/hw3/derby -Dderby.stream.error.file=/srv/dpe/sevinch/logs/hw3/derby-error.log -cp /srv/dpe/sevinch/dist/derby/lib/derby.jar:/srv/dpe/sevinch/dist/derby/lib/derbynet.jar:/srv/dpe/sevinch/dist/derby/lib/derbytools.jar org.apache.derby.drda.NetworkServerControl start -h 10.2.0.12 -p 21059
+  83083 /srv/dpe/sevinch/dist/jdk8/bin/java -Dproc_jar -Djava.library.path=/srv/dpe/sevinch/dist/hadoop/lib/native -Dproc_metastore -Xmx512m -Dlog4j.configurationFile=hive-log4j2.properties -Djava.util.logging.config.file=/srv/dpe/sevinch/dist/hive/bin/../conf/parquet-logging.properties -Dyarn.log.dir=/srv/dpe/sevinch/logs/hw2 -Dyarn.log.file=hadoop.log -Dyarn.home.dir=/srv/dpe/sevinch/dist/hadoop -Dyarn.root.logger=INFO,console -Dhadoop.log.dir=/srv/dpe/sevinch/logs/hw2 -Dhadoop.log.file=hadoop.log -Dhadoop.home.dir=/srv/dpe/sevinch/dist/hadoop -Dhadoop.id.str=dpe_sevinch -Dhadoop.root.logger=INFO,console -Dhadoop.policy.file=hadoop-policy.xml -Dhadoop.security.logger=INFO,NullAppender org.apache.hadoop.util.RunJar /srv/dpe/sevinch/dist/hive/lib/hive-metastore-4.0.0-alpha-2.jar org.apache.hadoop.hive.metastore.HiveMetaStore
+  83256 /srv/dpe/sevinch/dist/jdk8/bin/java -Dproc_jar -Djava.library.path=/srv/dpe/sevinch/dist/hadoop/lib/native -Dproc_hiveserver2 -Xmx512m -Dlog4j.configurationFile=hive-log4j2.properties -Djava.util.logging.config.file=/srv/dpe/sevinch/dist/hive/bin/../conf/parquet-logging.properties -Dyarn.log.dir=/srv/dpe/sevinch/logs/hw2 -Dyarn.log.file=hadoop.log -Dyarn.home.dir=/srv/dpe/sevinch/dist/hadoop -Dyarn.root.logger=INFO,console -Dhadoop.log.dir=/srv/dpe/sevinch/logs/hw2 -Dhadoop.log.file=hadoop.log -Dhadoop.home.dir=/srv/dpe/sevinch/dist/hadoop -Dhadoop.id.str=dpe_sevinch -Dhadoop.root.logger=INFO,console -Dhadoop.policy.file=hadoop-policy.xml -Dhadoop.security.logger=INFO,NullAppender org.apache.hadoop.util.RunJar /srv/dpe/sevinch/dist/hive/lib/hive-service-4.0.0-alpha-2.jar org.apache.hive.service.server.HiveServer2
+3. beeline и удалённый metastore
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/srv/dpe/sevinch/dist/hive/lib/log4j-slf4j-impl-2.18.0.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/srv/dpe/sevinch/dist/hadoop/share/hadoop/common/lib/slf4j-reload4j-1.7.36.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.apache.logging.slf4j.Log4jLoggerFactory]
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/srv/dpe/sevinch/dist/hive/lib/log4j-slf4j-impl-2.18.0.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/srv/dpe/sevinch/dist/hadoop/share/hadoop/common/lib/slf4j-reload4j-1.7.36.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.apache.logging.slf4j.Log4jLoggerFactory]
++-----------------------------------------------+
+|                      set                      |
++-----------------------------------------------+
+| hive.metastore.uris=thrift://10.2.0.12:21053  |
++-----------------------------------------------+
++----------------+
+| database_name  |
++----------------+
+| default        |
+| hw3            |
++----------------+
+4. HiveServer2 Web UI
+   HTTP 200 http://10.2.0.12:21051/
+5. критические ошибки в логах
+   критических строк: 0
+   ERROR (информационно): 0
+6. metastore не embedded
+   JDBC URL сетевой
+   Derby NetworkServerControl запущен
+
+VERIFY: OK

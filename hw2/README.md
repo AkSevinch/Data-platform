@@ -76,7 +76,7 @@ bash hw2/scripts/02_apply_config.sh
 ```
 
 Копирует конфиги из `hw2/conf/` в `/srv/dpe/sevinch/conf/hw2/` на все ноды,
-подставляя в `yarn.nodemanager.hostname` имя текущей ноды,
+подставляя в `yarn.nodemanager.hostname` IP текущей ноды (`10.2.0.1x`),
 плюс штатные `capacity-scheduler.xml` и `log4j.properties` из дистрибутива
 
 ### 03_start_yarn.sh
@@ -165,12 +165,13 @@ bash hw2/scripts/06_stop_yarn.sh
 - `yarn.resourcemanager.hostname` = `team-02-nn`, адреса RM привязаны
   к портам 21030-21033 и 21088 через `${yarn.resourcemanager.hostname}`
 - `yarn.resourcemanager.bind-host` = `0.0.0.0`
-- `yarn.nodemanager.hostname` = имя ноды (подставляет `02_apply_config.sh`),
+- `yarn.nodemanager.hostname` = IP ноды `10.2.0.1x` (подставляет `02_apply_config.sh`),
   адреса NM 21040-21042 через `${yarn.nodemanager.hostname}`
-- `yarn.nodemanager.bind-host` = `0.0.0.0`, обязательно:
-  иначе NodeManager слушает `127.0.1.1` (так резолвится имя ноды
-  в `/etc/hosts`), ResourceManager не сможет отправлять контейнеры,
-  и веб-интерфейс NM будет недоступен снаружи
+  IP нужен потому, что на team-02-00 и team-02-01 в `/etc/hosts` есть
+  строка `127.0.1.1 <fqdn>`, и MRAppMaster публиковал loopback-адрес,
+  из-за чего reduce-контейнеры на других нодах не могли к нему подключиться
+- `yarn.nodemanager.bind-host` = `0.0.0.0`, обязательно, чтобы NodeManager
+  слушал все интерфейсы, а не только loopback
 - `yarn.nodemanager.aux-services.mapreduce_shuffle.port` = `21045`,
   штатный порт shuffle 13562 выходит за диапазон участника
 - `yarn.log-aggregation-enable` = `true`,
@@ -197,6 +198,10 @@ bash hw2/scripts/06_stop_yarn.sh
   при остановке, поэтому после цикла `06 -> 03 -> 04` проверка чистая
 - `04_verify.sh` дополнительно фильтрует шум остановки:
   `SIGTERM` и `InterruptedException`
-- Интерфейсы внутри UI ResourceManager (ссылки на ноды с FQDN
-  `team-02-00.hse.c.mws`) открываются изнутри кластера,
+- На team-02-nn строка `127.0.1.1` из `/etc/hosts` уже удалена,
+  на team-02-00 и team-02-01 она осталась. Конфиг с IP от этого не зависит
+- После перехода на IP в `yarn.nodemanager.hostname` ноды в `yarn node -list`,
+  JobHistory и UI ResourceManager отображаются как `team-02-0x`,
+  что резолвится в правильный `10.2.0.1x`
+- Внутренние ссылки UI ResourceManager на ноды открываются изнутри кластера,
   с локальной машины пользуйтесь таблицей URL выше

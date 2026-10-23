@@ -10,12 +10,14 @@ CONF_DIR="$(cd "$(dirname "$0")/../conf" && pwd)"
 
 for HOST in "${NODES[@]}"; do
   echo "--> $HOST"
+  HOST_IP=$(getent ahostsv4 "$HOST" | awk 'NR==1{print $1}')
+  [ -n "$HOST_IP" ] || { echo "  не удалось определить IP для $HOST"; exit 1; }
   scp -q -i ~/.ssh/team_internal -o StrictHostKeyChecking=accept-new \
     "$CONF_DIR"/core-site.xml "$CONF_DIR"/hdfs-site.xml "$CONF_DIR"/yarn-site.xml \
     "$CONF_DIR"/mapred-site.xml "$CONF_DIR"/hadoop-env.sh "$CONF_DIR"/workers \
     "team@$HOST:/tmp/"
   ssh -i ~/.ssh/team_internal -o ConnectTimeout=8 "team@$HOST" "
-    sudo sed -i 's/__NODE__/$HOST/' /tmp/yarn-site.xml
+    sudo sed -i 's/__NODE__/$HOST_IP/' /tmp/yarn-site.xml
     sudo cp /tmp/{core-site.xml,hdfs-site.xml,yarn-site.xml,mapred-site.xml,hadoop-env.sh,workers} $BASE/conf/$HW/
     HADOOP_HOME_DIR=$BASE/dist/hadoop
     sudo cp \$HADOOP_HOME_DIR/etc/hadoop/capacity-scheduler.xml \$HADOOP_HOME_DIR/etc/hadoop/log4j.properties $BASE/conf/$HW/

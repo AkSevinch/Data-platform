@@ -8,7 +8,7 @@ CONF_DIR="$BASE/conf/$HW"
 NN_HOST="team-02-nn"
 
 echo "проверка, что dfs.namenode.name.dir указывает только на каталог участника"
-ssh -i ~/.ssh/team_internal -o ConnectTimeout=8 "team@$NN_HOST" \
+ssh -n -i ~/.ssh/team_internal -o ConnectTimeout=8 "team@$NN_HOST" \
   "sudo -iu $LINUX_USER bash -lc \"grep -A1 'dfs.namenode.name.dir' $CONF_DIR/hdfs-site.xml\""
 
 echo "целевой путь: $BASE/data/$HW/namenode"

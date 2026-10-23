@@ -42,7 +42,14 @@ nn 'yarn application -list 2>/dev/null | head -5 || true'
 
 echo
 echo "4. тестовый MapReduce job (pi)"
-nn 'hadoop jar /srv/dpe/sevinch/dist/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-3.3.6.jar pi 2 10 2>&1 | grep -E "Estimated|JobId|completed successfully" || true'
+FAILED=0
+JOB_OUT=$(nn 'hadoop jar /srv/dpe/sevinch/dist/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-3.3.6.jar pi 2 10 2>&1' || true)
+echo "$JOB_OUT" | grep -E "Estimated|JobId|completed successfully" || true
+if ! echo "$JOB_OUT" | grep -q "completed successfully"; then
+  echo "  FAIL: job не завершился успешно"
+  echo "$JOB_OUT" | tail -15
+  FAILED=1
+fi
 
 echo
 echo "5. веб-интерфейсы всех демонов"
@@ -55,7 +62,6 @@ check_ui() { # check_ui <host> <port> <name>
     FAILED=1
   fi
 }
-FAILED=0
 check_ui 10.2.0.11 21970 "NameNode"
 check_ui 10.2.0.11 21968 "SecondaryNameNode"
 check_ui 10.2.0.11 21964 "DataNode-11"

@@ -1,0 +1,46 @@
+1. режим создания таблицы
+   mode: spark_ctas
+2. HDFS-каталог таблицы
+Found 3 items
+drwxr-xr-x   - dpe_sevinch supergroup          0 2026-10-30 22:37 /user/dpe_sevinch/hive/warehouse/hw4.db/sales_summary/dt=2026-10-20
+drwxr-xr-x   - dpe_sevinch supergroup          0 2026-10-30 22:37 /user/dpe_sevinch/hive/warehouse/hw4.db/sales_summary/dt=2026-10-21
+drwxr-xr-x   - dpe_sevinch supergroup          0 2026-10-30 22:37 /user/dpe_sevinch/hive/warehouse/hw4.db/sales_summary/dt=2026-10-22
+   HDFS partition dirs: 3
+3. таблица в metastore
+tab_name
+sales_summary
+4. партиции
+partition
+dt=2026-10-20
+dt=2026-10-21
+dt=2026-10-22
+   partitions: 3
+5. количество строк и дней
+   rows: 9
+   days: 3
+6. агрегаты по дням
+dt	_c1	_c2
+2026-10-20	12	672.00
+2026-10-21	12	690.00
+2026-10-22	12	708.00
+7. содержимое таблицы
+dt	sale_date	category	orders	total_amount	avg_amount	max_amount
+2026-10-20	2026-10-20	books	4	232.00	58.00	84.50
+2026-10-20	2026-10-20	food	4	194.00	48.50	89.50
+2026-10-20	2026-10-20	tech	4	246.00	61.50	94.50
+2026-10-21	2026-10-21	books	4	208.00	52.00	78.50
+2026-10-21	2026-10-21	food	4	260.00	65.00	99.50
+2026-10-21	2026-10-21	tech	4	222.00	55.50	88.50
+2026-10-22	2026-10-22	food	4	236.00	59.00	93.50
+2026-10-22	2026-10-22	books	4	184.00	46.00	72.50
+2026-10-22	2026-10-22	tech	4	288.00	72.00	98.50
+8. описание таблицы
+| # Partition Information       | NULL                                               | NULL                                               |
+| dt                            | string                                             |                                                    |
+| Location:                     | hdfs://team-02-nn:21020/user/dpe_sevinch/hive/warehouse/hw4.db/sales_summary | NULL                                               |
+| Table Type:                   | EXTERNAL_TABLE                                     | NULL                                               |
+|                               | numPartitions                                      | 3                                                  |
+|                               | spark.sql.sources.schema                           | {\"type\":\"struct\",\"fields\":[{\"name\":\"sale_date\",\"type\":\"date\",\"nullable\":true,\"metadata\":{}},{\"name\":\"category\",\"type\":\"string\",\"nullable\":true,\"metadata\":{}},{\"name\":\"orders\",\"type\":\"long\",\"nullable\":true,\"metadata\":{}},{\"name\":\"total_amount\",\"type\":\"decimal(12,2)\",\"nullable\":true,\"metadata\":{}},{\"name\":\"avg_amount\",\"type\":\"decimal(12,2)\",\"nullable\":true,\"metadata\":{}},{\"name\":\"max_amount\",\"type\":\"decimal(12,2)\",\"nullable\":true,\"metadata\":{}},{\"name\":\"dt\",\"type\":\"string\",\"nullable\":true,\"metadata\":{}}]} |
+|                               | spark.sql.sources.schema.partCol.0                 | dt                                                 |
+
+VERIFY: OK

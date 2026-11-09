@@ -1,0 +1,31 @@
+{
+  "cluster": {
+    "live_datanodes": 3,
+    "running_nodes": 3,
+    "source_rows": 36
+  },
+  "spark": {
+    "app_id": "application_1793399358845_0012",
+    "days": 3,
+    "master": "yarn",
+    "partitions": [
+      "dt=2026-10-20",
+      "dt=2026-10-21",
+      "dt=2026-10-22"
+    ],
+    "rows": 9,
+    "source": "hdfs://team-02-nn:21020/user/dpe_sevinch/hw3/staging/sales.csv",
+    "table": "hw5.sales_summary"
+  },
+  "verify": {
+    "days": 3,
+    "hdfs_partitions": 3,
+    "partitions": [
+      "dt=2026-10-20",
+      "dt=2026-10-21",
+      "dt=2026-10-22"
+    ],
+    "rows": 9,
+    "verified": true
+  }
+}

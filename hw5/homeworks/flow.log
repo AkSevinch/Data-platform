@@ -1,0 +1,69 @@
+11:26:56.816 | INFO    | prefect - Starting temporary server on http://127.0.0.1:8146
+See https://www.prefect.io/docs/v3/concepts/server#how-to-guides for more information on running a dedicated Prefect server.
+11:27:08.964 | INFO    | Flow run 'simple-raven' - Beginning flow run 'simple-raven' for flow 'sevinch-hw5-sales-pipeline'
+11:27:11.482 | INFO    | Task run 'check_cluster-d0f' - HDFS live datanodes: 3
+11:27:13.992 | INFO    | Task run 'check_cluster-d0f' - source rows: 36
+11:27:15.757 | INFO    | Task run 'check_cluster-d0f' - YARN RUNNING nodes: 3
+11:27:15.759 | INFO    | Task run 'check_cluster-d0f' - Hive port 21050 is open
+11:27:15.761 | INFO    | Task run 'check_cluster-d0f' - Hive port 21051 is open
+11:27:15.762 | INFO    | Task run 'check_cluster-d0f' - Hive port 21053 is open
+11:27:15.763 | INFO    | Task run 'check_cluster-d0f' - Hive port 21059 is open
+11:27:18.079 | INFO    | Task run 'check_cluster-d0f' - Finished in state Completed()
+11:28:18.541 | INFO    | Task run 'run_spark-9eb' - spark-submit exit code: 0
+11:28:18.543 | INFO    | Task run 'run_spark-9eb' - spark-submit tail:
+26/11/09 11:27:43 INFO ServerInfo: Adding filter to /stages/stage: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+26/11/09 11:27:43 INFO ServerInfo: Adding filter to /stages/stage/json: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+26/11/09 11:27:43 INFO ServerInfo: Adding filter to /stages/pool: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+26/11/09 11:27:43 INFO ServerInfo: Adding filter to /stages/pool/json: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+26/11/09 11:27:43 INFO ServerInfo: Adding filter to /storage: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+26/11/09 11:27:43 INFO ServerInfo: Adding filter to /storage/json: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+26/11/09 11:27:43 INFO ServerInfo: Adding filter to /storage/rdd: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+26/11/09 11:27:43 INFO ServerInfo: Adding filter to /storage/rdd/json: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+26/11/09 11:27:43 INFO ServerInfo: Adding filter to /environment: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+26/11/09 11:27:43 INFO ServerInfo: Adding filter to /environment/json: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+26/11/09 11:27:43 INFO ServerInfo: Adding filter to /executors: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+26/11/09 11:27:43 INFO ServerInfo: Adding filter to /executors/json: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+26/11/09 11:27:43 INFO ServerInfo: Adding filter to /executors/threadDump: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+26/11/09 11:27:43 INFO ServerInfo: Adding filter to /executors/threadDump/json: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+26/11/09 11:27:43 INFO ServerInfo: Adding filter to /static: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+26/11/09 11:27:43 INFO ServerInfo: Adding filter to /: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+26/11/09 11:27:43 INFO ServerInfo: Adding filter to /api: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+26/11/09 11:27:43 INFO ServerInfo: Adding filter to /jobs/job/kill: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+26/11/09 11:27:43 INFO ServerInfo: Adding filter to /stages/stage/kill: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+26/11/09 11:27:43 INFO ServerInfo: Adding filter to /metrics/json: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+26/11/09 11:27:43 INFO YarnSchedulerBackend$YarnSchedulerEndpoint: ApplicationMaster registered as NettyRpcEndpointRef(spark-client://YarnAM)
+26/11/09 11:27:55 INFO YarnClientSchedulerBackend: SchedulerBackend is ready for scheduling beginning after waiting maxRegisteredResourcesWaitingTime: 30000000000(ns)
+26/11/09 11:27:59 WARN HiveConf: HiveConf of name hive.metastore.event.db.notification.api.auth does not exist
+26/11/09 11:28:00 WARN SetCommand: 'SET hive.exec.dynamic.partition.mode=nonstrict' might not work, since Spark doesn't support changing the Hive config dynamically. Please pass the Hive-specific config by adding the prefix spark.hadoop (e.g. spark.hadoop.hive.exec.dynamic.partition.mode) when starting a Spark application. For details, see the link: https://spark.apache.org/docs/latest/configuration.html#dynamically-loading-spark-properties.
+26/11/09 11:28:14 WARN SessionState: METASTORE_FILTER_HOOK will be ignored, since hive.security.authorization.manager is set to instance of HiveAuthorizerFactory.
+11:28:18.548 | INFO    | Task run 'run_spark-9eb' - Finished in state Completed()
+11:28:18.643 | INFO    | Task run 'verify_table-359' - HW5 Prefect verification
+11:28:18.645 | INFO    | Task run 'verify_table-359' - spark_app: application_1793399358845_0012
+11:28:18.646 | INFO    | Task run 'verify_table-359' - spark_master: yarn
+11:28:34.782 | INFO    | Task run 'verify_table-359' - tables_in_hw5:
+11:28:34.783 | INFO    | Task run 'verify_table-359' - tab_name
+sales_summary
+11:28:39.127 | INFO    | Task run 'verify_table-359' - partitions: 3
+11:28:39.128 | INFO    | Task run 'verify_table-359' - dt=2026-10-20
+dt=2026-10-21
+dt=2026-10-22
+11:29:26.364 | INFO    | Task run 'verify_table-359' - rows: 9
+11:30:09.304 | INFO    | Task run 'verify_table-359' - days: 3
+11:30:16.182 | INFO    | Task run 'verify_table-359' - hdfs_partition_dirs: 3
+11:31:36.138 | INFO    | Task run 'verify_table-359' - aggregates_by_day:
+11:31:36.139 | INFO    | Task run 'verify_table-359' - dt       _c1     _c2
+2026-10-20      12      672.00
+2026-10-21      12      690.00
+2026-10-22      12      708.00
+11:31:41.577 | INFO    | Task run 'verify_table-359' - table_metadata:
+11:31:41.578 | INFO    | Task run 'verify_table-359' - # Partition Information  NULL    NULL
+dt      string  
+Location:               hdfs://team-02-nn:21020/user/dpe_sevinch/hive/warehouse/hw5.db/sales_summary    NULL
+Table Type:             EXTERNAL_TABLE          NULL
+        numPartitions           3                   
+        spark.sql.sources.schema        {\"type\":\"struct\",\"fields\":[{\"name\":\"sale_date\",\"type\":\"date\",\"nullable\":true,\"metadata\":{}},{\"name\":\"category\",\"type\":\"string\",\"nullable\":true,\"metadata\":{}},{\"name\":\"orders\",\"type\":\"long\",\"nullable\":true,\"metadata\":{}},{\"name\":\"total_amount\",\"type\":\"decimal(12,2)\",\"nullable\":true,\"metadata\":{}},{\"name\":\"avg_amount\",\"type\":\"decimal(12,2)\",\"nullable\":true,\"metadata\":{}},{\"name\":\"max_amount\",\"type\":\"decimal(12,2)\",\"nullable\":true,\"metadata\":{}},{\"name\":\"dt\",\"type\":\"string\",\"nullable\":true,\"metadata\":{}}]}
+        spark.sql.sources.schema.partCol.0      dt                  
+11:31:41.669 | INFO    | Task run 'verify_table-359' - Finished in state Completed()
+11:31:41.821 | INFO    | Flow run 'simple-raven' - Finished in state Completed()
+HW5_FLOW_RESULT={"cluster": {"live_datanodes": 3, "running_nodes": 3, "source_rows": 36}, "spark": {"app_id": "application_1793399358845_0012", "days": 3, "master": "yarn", "partitions": ["dt=2026-10-20", "dt=2026-10-21", "dt=2026-10-22"], "rows": 9, "source": "hdfs://team-02-nn:21020/user/dpe_sevinch/hw3/staging/sales.csv", "table": "hw5.sales_summary"}, "verify": {"days": 3, "hdfs_partitions": 3, "partitions": ["dt=2026-10-20", "dt=2026-10-21", "dt=2026-10-22"], "rows": 9, "verified": true}}
+11:31:41.887 | INFO    | prefect - Stopping temporary server on http://127.0.0.1:8146

@@ -1,0 +1,110 @@
+HW5_RESULT={"app_id": "application_1793399358845_0012", "days": 3, "master": "yarn", "partitions": ["dt=2026-10-20", "dt=2026-10-21", "dt=2026-10-22"], "rows": 9, "source": "hdfs://team-02-nn:21020/user/dpe_sevinch/hw3/staging/sales.csv", "table": "hw5.sales_summary"}
+
+26/11/09 11:27:22 INFO SparkContext: Running Spark version 3.5.1
+26/11/09 11:27:22 INFO SparkContext: OS info Linux, 6.8.0-147-generic, amd64
+26/11/09 11:27:22 INFO SparkContext: Java version 1.8.0_412
+26/11/09 11:27:22 INFO ResourceUtils: ==============================================================
+26/11/09 11:27:22 INFO ResourceUtils: No custom resources configured for spark.driver.
+26/11/09 11:27:22 INFO ResourceUtils: ==============================================================
+26/11/09 11:27:22 INFO SparkContext: Submitted application: sevinch-hw5-sales-summary
+26/11/09 11:27:22 INFO ResourceProfile: Default ResourceProfile created, executor resources: Map(memoryOverhead -> name: memoryOverhead, amount: 256, script: , vendor: , cores -> name: cores, amount: 1, script: , vendor: , memory -> name: memory, amount: 512, script: , vendor: , offHeap -> name: offHeap, amount: 0, script: , vendor: ), task resources: Map(cpus -> name: cpus, amount: 1.0)
+26/11/09 11:27:23 INFO ResourceProfile: Limiting resource is cpus at 1 tasks per executor
+26/11/09 11:27:23 INFO ResourceProfileManager: Added ResourceProfile id: 0
+26/11/09 11:27:23 INFO SecurityManager: Changing view acls to: dpe_sevinch
+26/11/09 11:27:23 INFO SecurityManager: Changing modify acls to: dpe_sevinch
+26/11/09 11:27:23 INFO SecurityManager: Changing view acls groups to: 
+26/11/09 11:27:23 INFO SecurityManager: Changing modify acls groups to: 
+26/11/09 11:27:23 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view permissions: dpe_sevinch; groups with view permissions: EMPTY; users with modify permissions: dpe_sevinch; groups with modify permissions: EMPTY
+26/11/09 11:27:23 INFO Utils: Successfully started service 'sparkDriver' on port 43915.
+26/11/09 11:27:23 INFO SparkEnv: Registering MapOutputTracker
+26/11/09 11:27:23 INFO SparkEnv: Registering BlockManagerMaster
+26/11/09 11:27:23 INFO BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+26/11/09 11:27:23 INFO BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
+26/11/09 11:27:24 INFO SparkEnv: Registering BlockManagerMasterHeartbeat
+26/11/09 11:27:24 INFO DiskBlockManager: Created local directory at /srv/dpe/sevinch/tmp/hw5/blockmgr-8f5236b1-bfb8-431f-a227-bef2b62d11ac
+26/11/09 11:27:24 INFO MemoryStore: MemoryStore started with capacity 93.3 MiB
+26/11/09 11:27:24 INFO SparkEnv: Registering OutputCommitCoordinator
+26/11/09 11:27:24 INFO JettyUtils: Start Jetty 0.0.0.0:21405 for SparkUI
+26/11/09 11:27:24 INFO Utils: Successfully started service 'SparkUI' on port 21405.
+26/11/09 11:27:25 INFO DefaultNoHARMFailoverProxyProvider: Connecting to ResourceManager at team-02-nn/10.2.0.11:21032
+26/11/09 11:27:26 INFO AHSProxy: Connecting to Application History server at team-02-nn/10.2.0.11:10200
+26/11/09 11:27:26 INFO Configuration: resource-types.xml not found
+26/11/09 11:27:26 INFO ResourceUtils: Unable to find 'resource-types.xml'.
+26/11/09 11:27:26 INFO Client: Verifying our application has not requested more than the maximum memory capability of the cluster (8192 MB per container)
+26/11/09 11:27:26 INFO Client: Will allocate AM container, with 768 MB memory including 256 MB overhead
+26/11/09 11:27:26 INFO Client: Setting up container launch context for our AM
+26/11/09 11:27:26 INFO Client: Setting up the launch environment for our AM container
+26/11/09 11:27:26 INFO Client: Preparing resources for our AM container
+26/11/09 11:27:27 INFO Client: Source and destination file systems are the same. Not copying hdfs://team-02-nn:21020/user/dpe_sevinch/spark/spark-libs.zip
+26/11/09 11:27:27 INFO Client: Uploading resource file:/srv/dpe/sevinch/dist/spark/python/lib/pyspark.zip -> hdfs://team-02-nn:21020/user/dpe_sevinch/spark/staging/dpe_sevinch/.sparkStaging/application_1793399358845_0012/pyspark.zip
+26/11/09 11:27:27 INFO Client: Uploading resource file:/srv/dpe/sevinch/dist/spark/python/lib/py4j-0.10.9.7-src.zip -> hdfs://team-02-nn:21020/user/dpe_sevinch/spark/staging/dpe_sevinch/.sparkStaging/application_1793399358845_0012/py4j-0.10.9.7-src.zip
+26/11/09 11:27:28 INFO Client: Uploading resource file:/srv/dpe/sevinch/tmp/hw5/spark-7a8f1a50-c5ea-49a4-bc50-8f7fbe651f21/__spark_conf__2436827000802408863.zip -> hdfs://team-02-nn:21020/user/dpe_sevinch/spark/staging/dpe_sevinch/.sparkStaging/application_1793399358845_0012/__spark_conf__.zip
+26/11/09 11:27:28 INFO SecurityManager: Changing view acls to: dpe_sevinch
+26/11/09 11:27:28 INFO SecurityManager: Changing modify acls to: dpe_sevinch
+26/11/09 11:27:28 INFO SecurityManager: Changing view acls groups to: 
+26/11/09 11:27:28 INFO SecurityManager: Changing modify acls groups to: 
+26/11/09 11:27:28 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view permissions: dpe_sevinch; groups with view permissions: EMPTY; users with modify permissions: dpe_sevinch; groups with modify permissions: EMPTY
+26/11/09 11:27:28 INFO Client: Submitting application application_1793399358845_0012 to ResourceManager
+26/11/09 11:27:28 INFO YarnClientImpl: Submitted application application_1793399358845_0012
+26/11/09 11:27:29 INFO Client: Application report for application_1793399358845_0012 (state: ACCEPTED)
+26/11/09 11:27:29 INFO Client: 
+	 client token: N/A
+	 diagnostics: AM container is launched, waiting for AM container to Register with RM
+	 ApplicationMaster host: N/A
+	 ApplicationMaster RPC port: -1
+	 queue: default
+	 start time: 1794223648604
+	 final status: UNDEFINED
+	 tracking URL: http://team-02-nn:21088/proxy/application_1793399358845_0012/
+	 user: dpe_sevinch
+26/11/09 11:27:42 INFO Client: Application report for application_1793399358845_0012 (state: RUNNING)
+26/11/09 11:27:42 INFO Client: 
+	 client token: N/A
+	 diagnostics: N/A
+	 ApplicationMaster host: 10.2.0.12
+	 ApplicationMaster RPC port: -1
+	 queue: default
+	 start time: 1794223648604
+	 final status: UNDEFINED
+	 tracking URL: http://team-02-nn:21088/proxy/application_1793399358845_0012/
+	 user: dpe_sevinch
+26/11/09 11:27:42 INFO YarnClientSchedulerBackend: Application application_1793399358845_0012 has started running.
+26/11/09 11:27:42 INFO Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 42353.
+26/11/09 11:27:42 INFO NettyBlockTransferService: Server created on team-02-nn:42353
+26/11/09 11:27:42 INFO BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+26/11/09 11:27:42 INFO YarnClientSchedulerBackend: Add WebUI Filter. org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter, Map(PROXY_HOSTS -> team-02-nn, PROXY_URI_BASES -> http://team-02-nn:21088/proxy/application_1793399358845_0012), /proxy/application_1793399358845_0012
+26/11/09 11:27:42 INFO BlockManagerMaster: Registering BlockManager BlockManagerId(driver, team-02-nn, 42353, None)
+26/11/09 11:27:42 INFO BlockManagerMasterEndpoint: Registering block manager team-02-nn:42353 with 93.3 MiB RAM, BlockManagerId(driver, team-02-nn, 42353, None)
+26/11/09 11:27:42 INFO BlockManagerMaster: Registered BlockManager BlockManagerId(driver, team-02-nn, 42353, None)
+26/11/09 11:27:42 INFO BlockManager: Initialized BlockManager: BlockManagerId(driver, team-02-nn, 42353, None)
+26/11/09 11:27:43 INFO ServerInfo: Adding filter to /jobs: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+26/11/09 11:27:43 INFO ServerInfo: Adding filter to /jobs/json: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+26/11/09 11:27:43 INFO ServerInfo: Adding filter to /jobs/job: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+26/11/09 11:27:43 INFO ServerInfo: Adding filter to /jobs/job/json: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+26/11/09 11:27:43 INFO ServerInfo: Adding filter to /stages: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+26/11/09 11:27:43 INFO ServerInfo: Adding filter to /stages/json: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+26/11/09 11:27:43 INFO ServerInfo: Adding filter to /stages/stage: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+26/11/09 11:27:43 INFO ServerInfo: Adding filter to /stages/stage/json: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+26/11/09 11:27:43 INFO ServerInfo: Adding filter to /stages/pool: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+26/11/09 11:27:43 INFO ServerInfo: Adding filter to /stages/pool/json: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+26/11/09 11:27:43 INFO ServerInfo: Adding filter to /storage: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+26/11/09 11:27:43 INFO ServerInfo: Adding filter to /storage/json: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+26/11/09 11:27:43 INFO ServerInfo: Adding filter to /storage/rdd: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+26/11/09 11:27:43 INFO ServerInfo: Adding filter to /storage/rdd/json: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+26/11/09 11:27:43 INFO ServerInfo: Adding filter to /environment: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+26/11/09 11:27:43 INFO ServerInfo: Adding filter to /environment/json: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+26/11/09 11:27:43 INFO ServerInfo: Adding filter to /executors: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+26/11/09 11:27:43 INFO ServerInfo: Adding filter to /executors/json: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+26/11/09 11:27:43 INFO ServerInfo: Adding filter to /executors/threadDump: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+26/11/09 11:27:43 INFO ServerInfo: Adding filter to /executors/threadDump/json: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+26/11/09 11:27:43 INFO ServerInfo: Adding filter to /static: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+26/11/09 11:27:43 INFO ServerInfo: Adding filter to /: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+26/11/09 11:27:43 INFO ServerInfo: Adding filter to /api: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+26/11/09 11:27:43 INFO ServerInfo: Adding filter to /jobs/job/kill: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+26/11/09 11:27:43 INFO ServerInfo: Adding filter to /stages/stage/kill: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+26/11/09 11:27:43 INFO ServerInfo: Adding filter to /metrics/json: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+26/11/09 11:27:43 INFO YarnSchedulerBackend$YarnSchedulerEndpoint: ApplicationMaster registered as NettyRpcEndpointRef(spark-client://YarnAM)
+26/11/09 11:27:55 INFO YarnClientSchedulerBackend: SchedulerBackend is ready for scheduling beginning after waiting maxRegisteredResourcesWaitingTime: 30000000000(ns)
+26/11/09 11:27:59 WARN HiveConf: HiveConf of name hive.metastore.event.db.notification.api.auth does not exist
+26/11/09 11:28:00 WARN SetCommand: 'SET hive.exec.dynamic.partition.mode=nonstrict' might not work, since Spark doesn't support changing the Hive config dynamically. Please pass the Hive-specific config by adding the prefix spark.hadoop (e.g. spark.hadoop.hive.exec.dynamic.partition.mode) when starting a Spark application. For details, see the link: https://spark.apache.org/docs/latest/configuration.html#dynamically-loading-spark-properties.
+26/11/09 11:28:14 WARN SessionState: METASTORE_FILTER_HOOK will be ignored, since hive.security.authorization.manager is set to instance of HiveAuthorizerFactory.
